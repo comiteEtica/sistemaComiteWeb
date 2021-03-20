@@ -15,7 +15,7 @@
 	<div>
 		<div style="position: absolute; top: 13vw; left: 18vw">
 			<div>
-				<h1 style="font-size: 6.8vw; color: #48B1F0; margin-bottom: 5px;">Bienvenido</h1>
+				<h1 style="font-size: 6.8vw; color: #48B1F0; margin-bottom: 5px;">Bienvenidos</h1>
 			</div>
 			<div style="border-bottom: 3px solid #E20613;"></div>
 		</div>
