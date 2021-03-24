@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>COMITÉ DE ÉTICA CEISH UCE</title>
+            <link rel="stylesheet" type="text/css" href="Recursos/css/estiloExternas.css" />
+            <div class="content">           
+            </div>
+        </f:facet>  
+    </h:head>
+
+    <h:body>
+        <div class="main">
+            <div class="navbar">
+                <div class="link ">
+                    <h:link outcome="guiaViabilidadB.xhtml?faces-redirect=true">
+                        <h4>I.-  GUÍA DE VIABILIDAD BIOÉTICA PARA LOS PROYECTOS DE INVESTIGACIÓN</h4>
+                    </h:link>
+                </div>
+
+                <div class="link ">
+                    <h:link outcome="guiaIngresoProyectos.xhtml?faces-redirect=true">
+                        <h4>II.-  GUÍA PARA EL INGRESO DE PROYECTOS</h4>
+                    </h:link>
+                </div>
+
+                <div class="link ">
+                    <h:link outcome="miembros.xhtml?faces-redirect=true">
+                        <h4>III.  MIEMBROS DEL COMITÉ</h4>
+                    </h:link>
+                </div>
+
+                <div class="link ">
+                    <h:link outcome="documentacion.xhtml?faces-redirect=true">
+                        <h4>IV.-  DOCUMENTOS</h4>
+                    </h:link>
+                </div>
+
+                <div class="link ">
+                    <h:link outcome="quienesSomos.xhtml?faces-redirect=true">
+                        <h4>V.-  ¿ QUIÉNES SOMOS ?</h4>
+                    </h:link>
+                </div>
+
+            </div>
+
+            <div class="content" align="right">
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <br></br>
+                <h:form>
+                    <p:commandButton value ="REGÍSTRESE" icon="ui-icon-pencil"/> 
+                    <p:commandButton value ="INICIAR SESIÓN" icon="ui-icon-key"/> 
+                </h:form>  
+
+                <h:form>
+                    <div class="link">
+                        <p align="center">
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+                            <p:graphicImage   width="500x431" value="Recursos/imgUniversidad/logoNuevo.png" />
+                        </p>
+                    </div>
+                </h:form>  
+            </div>
+        </div>
+    </h:body>
+</html>
+

@@ -1,0 +1,143 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu:300,400");
+
+*{
+    box-sizing: border-box; margin: 0; padding: 0;
+}
+
+body{
+    background: url('../imgUniversidad/fondo_uce.png'); background-size: cover; font-family: ubuntu;
+    background-attachment: fixed;
+}
+
+
+.ui-datatable-tablewrapper {
+    width: auto;
+    overflow: hidden;
+}
+
+a{
+    text-decoration: none; color: #000;
+}
+
+.main{
+    width: 1250px;  display: flex;  margin: 0 auto; 
+}
+/*
+.navbar, .content{
+    border: 1px solid #000;
+}
+*/
+.navbar{
+    width: 500px; height: 1000px; display: flex; flex-direction: column; justify-content: around;
+    align-items: center; border-left: 3mm ridge rgb(5, 5, 255, .7); min-width: 300px; box-shadow: 5px 5px 10px rgba(0,0,0,0.8);
+    background: rgba(255,255,255,0.4); max-height: 420px; margin-left: -140px; margin-top: 200px;
+}
+
+.navbar .ui-widget{
+    box-sizing: border-box;
+}
+
+.navbar .link, .navbar .link a{
+    flex: 10; display: flex; justify-content: left; align-items: center;
+}
+
+.navbar .link{
+    width: 100%; border-bottom: 3px solid rgba(255,10,50,0.8);
+}
+
+.navbar .link:nth-child(9){
+    border-bottom: none;
+}
+
+.navbar .link.active a{
+    background:-moz-linear-gradient(bottom,rgba(36,37,130,1),rgba(93,0,211,1)); color: #fff;
+}
+
+.navbar .link a{
+    height: 100%; font-weight: bold; transition: 0.8s; text-shadow: 2px 2px 1px rgba(255,255,255,0.3);
+}
+
+.navbar .link a:hover{
+    background: rgba(122,242,241,1);/*rgba(132,206,235,1);*/ color: rgba(50,106,225,1);
+}
+
+.content{
+    width: 1000%; padding: 0px 20px;margin-top: 90px;
+}
+
+.content .caratula{
+    width: 1080px; height: 130px; margin: 5px auto; border: 10px solid #222; border-radius: 25px;
+    box-shadow: 25px 25px 23px rgba(0,0,0,0.5); background: url('../img/2.jpg');
+    display: flex; justify-content: center; align-items: center;
+}
+
+.content .caratula .crcnt{
+    background: rgba(255,255,255,0.7); text-align: center;
+}
+
+.imgi{
+    border-radius: 50%;
+}
+
+.ui-button{
+    margin-bottom: 5px; margin-right: 10px;
+}
+
+.ui-dialog .ui-button{
+    margin-top: 5px;
+}
+
+
+.ui-panel{
+    background: rgba(255,255,255,0.2); margin-bottom: 15px; box-shadow: 4px 4px 5px rgba(0,0,0,0.5);
+}
+
+.ui-datatable table{
+    width: auto;
+}
+
+.ui-datatable thead{
+    white-space: nowrap;
+}
+
+
+.ui-widget{
+    font-size: 1em; font-family: ubuntu;
+}
+
+.content .ui-widget{
+    font-size: 0.9em;
+}
+
+
+.ui-filter-colum{
+    width: auto;
+}
+.fadeInDown {
+  animation-name: fadeInDown;
+}
+
+@keyframes fadeInDownBig {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -2000px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+.login{
+    background-color: rgba(100, 211, 252, 0.35); border-radius: 10px ; margin: 2%; padding: 2%;
+}
+
+.cabecera-texto {
+    color: white;
+  margin-left: 500px;
+  margin-top: -90px;
+  padding:2rem;
+  line-height: 2;
+}

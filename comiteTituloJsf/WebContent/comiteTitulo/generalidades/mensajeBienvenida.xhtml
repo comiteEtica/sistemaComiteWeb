@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <f:view contentType="text/html" encoding="UTF-8">
+        <h:head>
+            <f:facet name="first">
+                <title>COMITÉ DE ÉTICA </title>
+                <link rel="stylesheet" type="text/css" href="Recursos/css/estiloExternas.css" />
+                <div class="content">           
+                </div>
+            </f:facet>  
+        </h:head>
+
+        <h:body>
+            <div class="main">
+                <div class="navbar">
+                    <div class="link ">
+                        <a href="index.xhtml">I.-  INICIO</a>
+                    </div>
+                    <div class="link ">
+                        <a href="guiaViabilidadB.xhtml">I.-  GUÍA DE VIABILIDAD BIOÉTICA PARA LOS PROYECTOS DE INVESTIGACIÓN</a>
+                    </div>
+                    <div class="link ">
+                        <a href="guiaIngresoProyectos.xhtml">II.-  GUÍA PARA EL INGRESO DE PROYECTOS </a>
+                    </div>
+                    <div class="link ">
+                        <a href="miembros.xhtml">III.  MIEMBROS DEL COMITÉ</a>
+                    </div>
+                    <div class="link ">
+                        <a href="documentacion.xhtml">IV.-  DOCUMENTOS</a>
+                    </div>
+                    <div class="link ">
+                        <a href="quienesSomos.xhtml">V.-  ¿ QUIÉNES SOMOS ?</a>
+                    </div>
+                </div>
+
+                <div class="content">
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+
+                    <center>
+                        <h:form>
+                            <p:outputPanel deferred="true">
+                                <h3>BIENVENIDO AL SISTEMA DEL COMITE DE ÉTICA DE INVESTIGACIÓN EN SERES HUMANOS.</h3>
+                                <br></br>
+
+                                <h3>SEISH UCE.</h3>
+                                <br></br>
+                                <br></br>
+
+                            </p:outputPanel>
+                            <br></br>
+                            <br></br>
+                            <h:commandButton value ="USUARIO UCE" onclick="PF('wdialog').show()"  icon="ui-icon-circle-arrow-w"   /> 
+                            <h:commandButton value ="USUARIO EXTERNO" onclick="PF('wdialog1').show()" icon="ui-icon-circle-arrow-e"  /> 
+
+                            <p:dialog id="dialog" widgetVar="wdialog" header="AVISO" modal="true" appendTo="@(body)">
+                                <div style="font-size:25px; color:#FF0000;">Toda la información que usted ingrese a la plataforma es confidencial.</div>
+                                <p align="center"> <p:commandButton value ="CONTINUAR"  icon="ui-icon-flag"  action="loginUce.xhtml?faces-redirect=true" />  </p>
+                            </p:dialog>
+
+                            <p:dialog id="dialog2" widgetVar="wdialog1" header="AVISO" modal="true" appendTo="@(body)">
+                                <div style="font-size:25px; color:#FF0000;">Toda la información que usted ingrese a la plataforma es confidencial.</div>
+                                <p align="center"> <p:commandButton value ="CONTINUAR"  icon="ui-icon-flag"  action="loginExterno.xhtml?faces-redirect=true" /> </p>
+                            </p:dialog>
+
+                            <p align="center">
+                                <p:graphicImage   width="260x251" value="../Recursos/imgUniversidad/logoNuevo.png" />
+                            </p>
+                        </h:form>
+                    </center>
+                </div>
+            </div>
+        </h:body>
+    </f:view>
+</html>
+

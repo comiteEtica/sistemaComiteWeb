@@ -1,0 +1,74 @@
+
+
+/*------------------------------------*\
+-------- DEMO Code: accordion
+\*------------------------------------*/
+/*----- Accordion -----*/
+.accordion, .accordion * {
+	-webkit-box-sizing:border-box; 
+	-moz-box-sizing:border-box; 
+	box-sizing:border-box;
+}
+
+.accordion {
+	overflow:hidden;
+	box-shadow:0px 1px 3px rgba(0,0,0,0.25);
+	border-radius:3px;
+	border-bottom:1px solid #333;
+	border-top:1px solid #333;
+
+}
+
+/*----- Section Titles -----*/
+.accordion-section-title {
+	width:100%;
+	    padding: 15px 30px;
+	display:inline-block;
+	border-bottom:1px solid #333;
+	transition:all linear 0.15s;
+	/* Type */
+	font-size:1em;
+	color:#333;
+	text-decoration: none;
+}
+
+.accordion-section-title.active, .accordion-section-title:hover {
+
+	padding:15px 35px;
+	/* Type */
+	text-decoration:none;
+	color: #3396FF;
+	
+}
+
+.accordion-section:last-child .accordion-section-title {
+	border-bottom:none;
+}
+
+/*----- Section Content -----*/
+.accordion-section-content {
+	padding:10px;
+	display:none;
+	background-color: #3396FF;
+	color: #fff;
+}
+
+.accordion-section-content a {
+	color: #fff;
+	text-decoration: none;
+	font-size: 14px;
+}
+
+.accordion-section-content a:hover {
+	color: #fff;
+	text-decoration: underline;
+}
+
+li{
+	margin: 5px 0px;
+	transition:all linear 0.15s;
+}
+
+li:hover{
+	margin-left: 5px;
+}

@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <link rel="stylesheet" type="text/css" href="Recursos/css/estiloGeneral.css" />
+                <title>COMITÉ DE ÉTICA CEISH UCE</title>
+            </f:facet>
+        </h:head>
+
+        <h:body>
+            <script type="text/javascript">
+                PrimeFaces.locales['es'] = {
+                    closeText: 'Cerrar',
+                    prevText: 'Anterior',
+                    nextText: 'Siguiente',
+                    monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                    monthNamesShort: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'],
+                    dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                    dayNamesShort: ['Dom', 'Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab'],
+                    dayNamesMin: ['D', 'L', 'M', 'M', 'J', 'V', 'S'],
+                    weekHeader: 'Semana',
+                    firstDay: 1,
+                    isRTL: false,
+                    showMonthAfterYear: false,
+                    yearSuffix: '',
+                    timeOnlyTitle: 'Sólo hora',
+                    timeText: 'Tiempo',
+                    hourText: 'Hora',
+                    minuteText: 'Minuto',
+                    secondText: 'Segundo',
+                    currentText: 'Fecha actual',
+                    ampm: false,
+                    month: 'Mes',
+                    week: 'Semana',
+                    day: 'Día',
+                    allDayText: 'Todo el día'
+                };
+            </script>
+            <style type="text/css">
+                .value {
+                    width: 500px;
+                }
+            </style>
+
+            <p:messages id="mensaje" autoUpdate="false"/>
+            <div class="cuerpologuin2" style="margin: 50px">
+
+                <h:form id="CrearUsuario" enctype="multipart/form-data">
+                    <center style="margin-bottom: 0px;">
+                        <a href="index.xhtml">
+                            <img src="../Recursos/imgUniversidad/logoNuevo.png" width="200" height="120"/>    
+                        </a>
+
+                        <h2>REGISTRO DE NUEVOS USUARIOS </h2>
+
+                        <div class="ui-g">
+                            <div class="ui-g-12 ui-md-12 ui-lg-1"/>
+                            <div class="ui-g-12 ui-md-12 ui-lg-10 cuerpologuin2" >
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel value="Fecha de Ingreso: "/>                            
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:calendar value="#{ControladorUsuarios.dateDe}" locale="es" navigator="true" pattern="yyyy" disabled="true" />
+                                    </div>
+                                </div> 
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel value="Institución: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:selectOneMenu id="institucion" value="#{ControladorUsuarios.auxInstitucion}" style="width:90%;">
+                                            <f:selectItem itemLabel="Seleccione la Institución a la que pertenece" itemValue="" noSelectionOption="true"  />
+                                            <f:selectItems value="#{ControladorInstitucion.listaInstitucion}"  var="lis" itemValue="#{lis.institucionId}" itemLabel="#{lis.institucionNombre}"/>
+                                            <p:ajax listener="#{ControladorUsuarios.listarFacultad()}" process=":CrearUsuario:institucion" update=":CrearUsuario:facultad"/>
+                                            <p:ajax listener="#{ControladorUsuarios.listarCarrera()}" process=":CrearUsuario:facultad" update=":CrearUsuario:carrera"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel for="txtNombres" value="Nombres: " />                            
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:inputText id="txtNombres" value="#{ControladorUsuarios.usuario.usuarioNombre}" onkeyup="this.value = this.value.toUpperCase();" style="width: 100%"  required="true" validatorMessage = "Su nombre solo puede tener caracteres alfabéticos">
+                                            <f:validateRegex pattern = "^[a-zA-Z ]*$" />    
+                                        </p:inputText>
+                                        <p:message for="txtNombres" /> 
+                                    </div>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel value="Facultad: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:selectOneMenu id="facultad" value="#{ControladorUsuarios.auxFacultad}" style="width:90%;">
+                                            <f:selectItem itemLabel="Seleccione la Facultad a la que pertenece" itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{ControladorUsuarios.listFacultad}"  var="lis" itemValue="#{lis.facultadId}" itemLabel="#{lis.facultadNombre}"/>
+                                            <p:ajax listener="#{ControladorUsuarios.listarCarrera()}" process=":CrearUsuario:facultad" update=":CrearUsuario:carrera"/>
+
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel for="txtApellidos" value="Apellidos: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:inputText id="txtApellidos" value="#{ControladorUsuarios.usuario.usuarioApellido}" onkeyup="this.value = this.value.toUpperCase();" style="width: 100%" required="true" validatorMessage = "Su nombre solo puede tener caracteres alfabéticos">
+                                            <f:validateRegex pattern = "^[a-zA-Z ]*$" />  
+                                        </p:inputText>
+                                        <p:message for="txtApellidos"/> 
+                                    </div>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel value="Carrea: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:selectOneMenu id="carrera" value="#{ControladorUsuarios.auxCarrera}" style="width:90%;">
+                                            <f:selectItem itemLabel="Seleccione la Carrera a la que pertenece" itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{ControladorUsuarios.listCarrera}"  var="lis" itemValue="#{lis.carreraId}" itemLabel="#{lis.carreraNombre}"/>
+                                        </p:selectOneMenu>
+                                    </div>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel for="txtCedula" value="Cédula/Pasaporte: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:inputText id="txtCedula" value="#{ControladorUsuarios.usuario.usuarioCi}" style="width: 100%" required="true" validatorMessage="Porfavor ingrese 10 números" maxlength="10">
+                                         <f:validateLength minimum="10" maximum="10" />
+                                          </p:inputText>
+                                        <p:message for="txtCedula"/> 
+                                    </div>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel value="Fecha de Nacimiento: "/>                            
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:calendar id="form" value="#{ControladorUsuarios.usuario.usuarioFechaNacimiento}" locale="es" required="true" timeZone="GMT+2" pattern="dd-MM-yyyy" placeholder="dd-MM-yyyy" showOn="button" mask="true" />
+                                    </div>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel for="txtProvincia" value="Provincia: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:selectOneMenu value="#{ControladorUsuarios.auxProvincia}" style="width:90%;">
+                                            <f:selectItem id="txtProvincia" itemLabel="Seleccione la Provincia" itemValue="" noSelectionOption="true" />
+                                            <f:selectItems value="#{ControladorProvincia.listaProvincia}"  var="lis" itemValue="#{lis.provinciaId}" itemLabel="#{lis.provinciaNombre}"/>
+                                        </p:selectOneMenu>
+                                        <p:message for="txtProvincia"/>
+                                    </div>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel for="txtCorreo" value="Correo Electrónico: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:inputText id="txtCorreo" value="#{ControladorUsuarios.usuario.usuarioCorreo}" style="width: 100%" required="true" validatorMessage="Debe tener el formato ejemplo@uce.edu.ec/ejemplo2@hotmail.com">
+                                            <f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+                                        </p:inputText>   
+                                        <p:message for="txtCorreo"/> 
+                                    </div>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel for="txtTelefono" value="Teléfono: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:inputText id="txtTelefono" value="#{ControladorUsuarios.usuario.usuarioTelefono}" style="width: 100%" required="true"  validatorMessage="Porfavor ingrese 10 números." maxlength="10" converterMessage="Porfavor solo números.">
+                                            <f:validateLength minimum="9" maximum="10" />
+                                        </p:inputText>
+                                        <p:message for="txtTelefono"/> 
+                                    </div>
+                                </div>  
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel value="ORCID: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:inputText value="#{ControladorUsuarios.usuario.usuarioOrcid}" style="width: 100%" placeholder="Opcional"/>
+                                    </div>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel value="Sexo: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:selectOneRadio value="#{ControladorUsuarios.auxGenero}" style="width:90%;">
+                                            <f:selectItems value="#{ControladorGenero.listaGenero}"  var="lista" itemValue="#{lista.generoId}" itemLabel="#{lista.generoDescripcion}"/>
+                                        </p:selectOneRadio>
+                                    </div>
+                                </div>
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel for="txtInvestigador" value="Investigador Principal/Director de Proyecto/Responsable: "/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:inputText id="txtInvestigador" value="#{ControladorUsuarios.usuario.usuarioLider}" onkeyup="this.value = this.value.toUpperCase();" style="width: 100%" required="true" validatorMessage = "Su nombre solo puede tener caracteres alfabéticos"> 
+                                            <f:validateRegex pattern = "^[a-zA-Z ]*$" />  
+                                        </p:inputText>
+                                        <p:message for="txtInvestigador"/> 
+                                    </div>
+                                </div>
+
+
+                                <div class="ui-g-12 ui-md-12 ui-lg-6">
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" >
+                                        <p:outputLabel for="txtArchivo" value="Subir la parte del documento donde se pueda ver el NOMBRE del Investigador Principal(solo esa parte del Documento):"/>
+                                    </div>
+                                    <div class="ui-g-12 ui-md-12 ui-lg-6" > 
+                                        <p:fileUpload id="txtArchivo" value="#{ControladorUsuarios.file}" mode="simple"/>
+                                        <p:message for="txtArchivo"/> 
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="ui-g-12 ui-md-12 ui-lg-1"/>
+                        </div>
+
+                        <p:commandButton value="GUARDAR" actionListener="#{ControladorUsuarios.grabarUsuario()}" icon="ui-icon-folder-open" update ="CrearUsuario" ajax="false"/>
+                        <p:commandButton value="BORRAR"  icon="ui-icon-refresh" type="reset"  />
+                    </center>
+                </h:form>
+
+                <br></br>
+                <br></br>
+                <br></br>
+
+                <h:form>
+                    <center>
+                        <h:link outcome="index.xhtml?faces-redirect=true">
+                            <h:graphicImage url="./../Recursos/imgIconos/home3.png"  width="80" height="70"/>
+                        </h:link>
+                    </center>
+                </h:form>
+            </div> 
+        </h:body>
+    </f:view>
+</html>
+
